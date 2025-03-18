@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foydalanuvchi Profili</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid #007bff;
+            object-fit: cover;
+        }
+        .profile-info {
+            margin-top: 20px;
+        }
+        .profile-info h2 {
+            margin: 10px 0;
+            color: #333;
+        }
+        .profile-info p {
+            margin: 5px 0;
+            color: #555;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 15px;
+            text-decoration: none;
+            background: #007bff;
+            color: white;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    {% if profile.profile_pict %}
+        <img src="{{ profile.profile_pict.url }}" alt="Profil rasmi" class="profile-img">
+    {% else %}
+        <img src="https://via.placeholder.com/120" alt="Profil rasmi" class="profile-img">
+    {% endif %}
+    
+    <div class="profile-info">
+        <h2>{{ user.username }}</h2>
+        {% if profile.bio %}
+            <p><i class="fas fa-user"></i> <strong>Bio:</strong> {{ profile.bio }}</p>
+        {% endif %}
+        {% if profile.address %}
+            <p><i class="fas fa-map-marker-alt"></i> <strong>Manzil:</strong> {{ profile.address }}</p>
+        {% endif %}
+        {% if profile.phone_number %}
+            <p><i class="fas fa-phone"></i> <strong>Telefon:</strong> {{ profile.phone_number }}</p>
+        {% endif %}
+    </div>
+
+    {% if user == request.user %}
+        <a href="#" class="btn"><i class="fas fa-edit"></i>Editing profile</a>
+       
+    {% endif %}
+     <a href="{% url 'home' %}" class="btn btn-secondary">Cancel</a>
+</div>
+
+</body>
+</html>

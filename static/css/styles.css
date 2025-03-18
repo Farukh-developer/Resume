@@ -1,0 +1,378 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f8f8;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header */
+header {
+  background-color: #1a1a1a;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2.5rem;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #333;
+  padding: 10px 0;
+}
+
+.nav {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #fff;
+  padding: 10px 15px;
+  display: block;
+  transition: background 0.3s;
+}
+
+.nav-link:hover {
+  background-color: #444;
+}
+
+/* Main Content */
+main {
+  padding: 20px;
+  background-color: #fff;
+  min-height: 60vh;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Product Grid (Mahsulotlarni tartib bilan chiqarish) */
+.product-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.product-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s ease;
+  border: 1px solid #ddd;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.product-card img {
+  max-width: 100%;
+  height: 285px;
+  border-radius: 5px;
+}
+
+.product-card h3 {
+  font-size: 1.2rem;
+  margin: 10px 0;
+  color: #222;
+  letter-spacing: 0.5px;
+  text-transform: capitalize;
+}
+
+/* Mahsulot haqidagi ma'lumot */
+.product-card p {
+  font-size: 1rem; /* Biroz kattaroq font */
+  color: #580c0c; /* Yumshoq qora rang */
+  line-height: 1.6; /* O'qilishi qulay bo'lishi uchun */
+  font-family: 'Roboto', sans-serif; /* O'qilishi yaxshi shrift */
+  margin-bottom: 15px;
+  text-align: center; /* Matnni markazga joylash */
+  transition: color 0.3s ease; /* Rangni yumshoq o'zgartirish */
+}
+
+/* Hover effekt qo'shish */
+.product-card p:hover {
+  color: #2980b9; /* Hover qilinganda rang o'zgarishi */
+}
+
+/* Mahsulot narxi */
+.product-card .price {
+  font-weight: bold;
+  color: #252424dc; /* To'q rangda narx */
+  font-size: 1.3rem; /* Kattaroq narx */
+  margin: 10px 0;
+  text-transform: uppercase; /* Katta harflar */
+  letter-spacing: 1px; /* Harflar orasida bo'shliq */
+  padding: 5px 10px;
+  background-color: #0d9db4 ; /* Yorqin fon */
+  border-radius: 6px; /* Burchaklarni yumshatish */
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* Yumshoq soyalar */
+  transition: transform 0.3s ease, color 0.3s ease; /* Animatsiya */
+}
+
+/* Narx hover effekti */
+.product-card .price:hover {
+  transform: scale(1.1); /* Hoverda narxni kattalashtirish */
+  color: #ccc41e; /* Rangni o'zgartirish */
+}
+
+
+.product-card a {
+  display: inline-block;
+  background: #007bff;
+  color: #fff;
+  padding: 8px 12px;
+  margin: 5px 5px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  transition: background 0.3s;
+}
+
+.product-card a:hover {
+  background: #0056b3;
+}
+
+/* Footer */
+footer {
+  background: #1a1a1a;
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+  margin-top: 60px;
+}
+
+/* Navbar styling */
+.navbar {
+    background-color: #333;
+    padding: 10px 0;
+}
+  
+.nav {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+  
+.nav-item {
+    position: relative;
+}
+  
+.nav-link {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 15px;
+    display: block;
+    transition: background 0.3s;
+}
+  
+.nav-link:hover {
+    background-color: #444;
+}
+
+/* Dropdown menyuni yashirish */
+.category-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  list-style: none;
+  padding: 0;
+  min-width: 200px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.category-dropdown li {
+  padding: 10px;
+}
+
+.category-dropdown li a {
+  text-decoration: none;
+  color: #333;
+  display: block;
+  padding: 10px;
+  transition: background 0.3s;
+}
+
+.category-dropdown li a:hover {
+  background: #f1f1f1;
+}
+
+/* Sichqoncha ustiga olib borilganda menyuni ochish */
+.category:hover .category-dropdown {
+  display: block;
+}
+
+/* Login/Logout Dropdown */
+.login-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    list-style: none;
+    padding: 0;
+    min-width: 200px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.login-dropdown li {
+    padding: 10px;
+}
+
+.login-dropdown li a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    padding: 10px;
+    transition: background 0.3s;
+}
+
+.login-dropdown li a:hover {
+    background: #f1f1f1;
+}
+
+/* Sichqoncha ustiga olib borilganda menyuni ochish */
+.login:hover .login-dropdown {
+  display: block;
+}
+/* Search Box - Navbar Right Side */
+/* Qidiruv maydoni form */
+.search-container {
+  display: flex;
+  align-items: center;
+  margin-left: auto; /* O‘ng tomonga chiqarish */
+  gap: 5px;
+  padding: 5px 10px;
+}
+
+/* Input maydoni */
+.search-box {
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  width: 200px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Inputga fokus qilinganda */
+.search-box:focus {
+  border-color: #007bff;
+  box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Qidiruv tugmasi */
+.search-button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s ease-in-out;
+}
+
+/* Tugmaga hover qilganda */
+.search-button:hover {
+  background: #0056b3;
+}
+
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+  color: white !important;
+}
+
+/* Har bir tugmaga alohida rang beramiz */
+.details { background: #17a2b8 !important; } /* Ko‘k */
+.create { background: #28a745 !important; } /* Yashil */
+.edit { background: #ffc107 !important; color: black !important; } /* Sariq */
+.remove { background: #dc3545 !important; } /* Qizil */
+
+/* Hover effekt */
+.details:hover { background: #138496 !important; }
+.create:hover { background: #218838 !important; }
+.edit:hover { background: #e0a800 !important; }
+.remove:hover { background: #c82333 !important; }
+
+/* Ikonkalar kattaligini bir xil qilish */
+.btn i {
+  font-size: 1.1rem !important;
+}
+
+.cart-icon {
+  position: relative;
+  font-size: 24px;
+  text-decoration: none;
+  color: white;
+}
+
+.cart-count {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background: red;
+  color: white;
+  border-radius: 50%;
+  padding: 3px 7px;
+  font-size: 14px;
+  font-weight: bold;
+}
+.category-container {
+  text-align: center;  /* Matnni markazga olish */
+  margin-top: 20px;    /* Yuqoridan bo‘sh joy qo‘shish */
+}
+
+.category-title {
+  font-size: 28px;     /* Matn hajmini kattalashtirish */
+  font-weight: bold;   /* Qalin matn qilish */
+  color: #333;         /* Matn rangi */
+  text-transform: uppercase; /* Katta harflar bilan chiqarish */
+  letter-spacing: 2px; /* Harflar orasidagi masofa */
+  border-bottom: 3px solid #007bff; /* Pastki chiziq qo‘shish */
+  display: inline-block; /* Chiziq uzunligini matn bo‘yicha moslash */
+  padding-bottom: 5px;  /* Chiziq bilan matn orasiga bo‘sh joy qo‘shish */
+}
+
+
+.profile {
+  margin-left: 80%;
+  color: white;
+}

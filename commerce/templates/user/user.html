@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+<table class="table table-primary">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">First name</th>
+        <th scope="col">last name</th>
+        <th scope="col">phone number</th>
+        <th scope="col"> address</th>
+        <th scope="col">Button</th>
+      </tr>
+    </thead>
+    {% for i in users %}
+    <tbody>
+      <tr>
+        <th scope="row">{{i.id}}</th>
+        <td><a href="#">{{i.first_name}}</a></td>
+        <td>{{i.last_name}}</td>
+        <td>{{i.phone_number}}</td>
+        <td>{{i.address}}</td>
+        <td>
+          
+          <a class="btn btn-outline-danger" href="{% url 'users:delete' i.id %}">Delete</a>
+          <a class="btn btn-outline-info" href="{% url 'users:edit' i.id %}">Edit</a>
+    
+        </td>
+      </tr>
+      
+    </tbody>
+    {% endfor %}
+  </table>
+</div>
+{% endblock content %}

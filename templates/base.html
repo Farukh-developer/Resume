@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <title>{% block title %}E-Commerce{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>E-Commerce</h1>
+        <nav class="navbar">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a href="{% url 'home' %}" class="nav-link">Home</a>
+                </li>
+
+                <li class="nav-item category">
+                    <a href="#" class="nav-link">Category ▼</a>
+                    <ul class="category-dropdown">
+                        {% for category in categories %}
+                        <li><a href="{% url 'category' category.id %}">{{ category.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+
+                <!-- Auth qismi -->
+                <li class="nav-item category">
+                    <a href="#" class="nav-link">Sign Up ▼</a>
+                    <ul class="category-dropdown">
+                        {% if not request.user.is_authenticated %}
+                        <li><a href="{% url 'login' %}">Login</a></li>
+                        <li><a href="{% url 'register' %}">Register</a></li>
+                        {% else %}
+                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                        {% endif %}
+                    </ul>
+                </li>
+
+                <!-- Cart Icon with Item Count -->
+                <li class="nav-item cart-icon">
+                    <a href="{% url 'cart_view' %}" class="cart-icon">
+                        🛒
+                        {% if cart_count > 0 %}
+                            <span class="cart-count">{{ cart_count }}</span>
+                        {% else %}
+                            <span class="cart-count">0</span>
+                        {% endif %}
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Profile settings -->
+            {% if request.user.is_authenticated %}
+                <a href="{% url 'profile' username=request.user.username %}" class="profile">
+                    <i class="fas fa-user"></i>
+                </a>
+            {% else %}
+                <a href="{% url 'login' %}" class="profile">
+                    <i class="fas fa-sign-in-alt"></i>
+                </a>
+            {% endif %}
+
+            <!-- Search Form -->
+            <form method="GET" action="{% url 'search' %}" class="search-container">
+                <input type="text" name="q" class="search-box" placeholder="Search products...">
+                <button type="submit" class="search-button">Search</button>
+            </form>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 E-Commerce</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let categoryItems = document.querySelectorAll(".category");
+            
+            categoryItems.forEach(item => {
+                let dropdown = item.querySelector(".category-dropdown");
+
+                item.addEventListener("mouseenter", function () {
+                    dropdown.style.display = "block";
+                });
+
+                item.addEventListener("mouseleave", function () {
+                    dropdown.style.display = "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>

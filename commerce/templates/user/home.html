@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block title %}Mahsulotlar{% endblock %}
+
+{% block content %}
+
+<h2 class="section-title" style="text-align: center;">All products</h2>
+
+<!-- Cars Section -->
+<div class="category-container">
+    <h3 class="category-title">Cars</h3>
+</div>
+
+
+<div class="product-container">
+
+    {% for product in products %}
+        {% if product.category.name == 'Car' %}
+            <div class="product-card">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                <h3>{{ product.name }}</h3>
+                <a href="{% url 'about' pk=product.pk %}" class="btn details">
+                    <i class="fas fa-info-circle"></i> More information
+                </a>
+                <p>{{ product.description|truncatechars:100 }}</p>
+                <p class="price">Narx: ${{ product.price }}</p>
+
+                {% if request.user.is_authenticated and request.user.user_role == 'admin' %}
+                    <a href="{% url 'product_create' %}" class="btn create">
+                        <i class="fas fa-plus-circle"></i> Create
+                    </a>
+                    <a href="{% url 'product_update' pk=product.pk %}" class="btn edit">
+                        <i class="fas fa-edit"></i> Edit
+                    </a>
+                    <a href="{% url 'product_delete' pk=product.pk %}" class="btn remove">
+                        <i class="fas fa-trash-alt"></i> Remove
+                    </a>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>
+
+<!-- Clothes Section -->
+
+<div class="category-container">
+    <h3 class="category-title">Clothes</h3>
+</div>
+
+<div class="product-container">
+    {% for product in products %}
+        {% if product.category.name == 'Clothes' %}
+            <div class="product-card">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                <h3>{{ product.name }}</h3>
+                <a href="{% url 'about' pk=product.pk %}" class="btn details">
+                    <i class="fas fa-info-circle"></i> More information
+                </a>
+                <p>{{ product.description|truncatechars:100 }}</p>
+                <p class="price">Narx: ${{ product.price }}</p>
+
+                {% if request.user.is_authenticated and request.user.user_role == 'admin' %}
+                    <a href="{% url 'product_create' %}" class="btn create">
+                        <i class="fas fa-plus-circle"></i> Create
+                    </a>
+                    <a href="{% url 'product_update' pk=product.pk %}" class="btn edit">
+                        <i class="fas fa-edit"></i> Edit
+                    </a>
+                    <a href="{% url 'product_delete' pk=product.pk %}" class="btn remove">
+                        <i class="fas fa-trash-alt"></i> Remove
+                    </a>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>
+
+<!-- Mechanics Section -->
+
+<div class="category-container">
+    <h3 class="category-title">Mechanics</h3>
+</div>
+
+<div class="product-container">
+    {% for product in products %}
+        {% if product.category.name == 'Mechanics' %}
+            <div class="product-card">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                <h3>{{ product.name }}</h3>
+                <a href="{% url 'about' pk=product.pk %}" class="btn details">
+                    <i class="fas fa-info-circle"></i> More information
+                </a>
+                <p>{{ product.description|truncatechars:100 }}</p>
+                <p class="price">Narx: ${{ product.price }}</p>
+
+                {% if request.user.is_authenticated and request.user.user_role == 'admin' %}
+                    <a href="{% url 'product_create' %}" class="btn create">
+                        <i class="fas fa-plus-circle"></i> Create
+                    </a>
+                    <a href="{% url 'product_update' pk=product.pk %}" class="btn edit">
+                        <i class="fas fa-edit"></i> Edit
+                    </a>
+                    <a href="{% url 'product_delete' pk=product.pk %}" class="btn remove">
+                        <i class="fas fa-trash-alt"></i> Remove
+                    </a>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>
+
+{% endblock %}
